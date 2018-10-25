@@ -1,15 +1,18 @@
 {
-  "name": "",
+  "name": "proxy_for_airbnb_clone",
   "version": "",
   "description": "",
-  "author": "",
+  "author": "Eric Callari <ericcallari1@gmail.com>",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "nodemon ./server/server.js"
   },
   "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.4"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
