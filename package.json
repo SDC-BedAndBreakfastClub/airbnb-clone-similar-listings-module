@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "acorn": "^6.0.2",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongo": "^0.1.0",
     "nodemon": "^1.18.4",
+    "path": "^0.12.7",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
   },
