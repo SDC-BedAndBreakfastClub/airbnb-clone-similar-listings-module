@@ -1,4 +1,5 @@
 import React from 'react';
+import Listing from './Listing';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h3>This is the App. It&aposs right here. You see it?</h3>
+        <h3>App</h3>
+        <Listing />
       </div>
     );
   }
