@@ -1,17 +1,66 @@
 {
-  "name": "",
+  "name": "proxy_for_airbnb_clone",
   "version": "",
   "description": "",
-  "author": "",
+  "author": "Eric Callari <ericcallari1@gmail.com>",
   "license": "",
   "engines": {
-    "node": ">=6.13.0"
+    "node": ">=8.12.0"
   },
   "scripts": {
+    "start": "nodemon server/index.js",
+    "react-dev": "webpack -d --watch",
+    "test": "jest"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "verbose": true,
+    "testMatch": [
+      "**/client/src/components/**/*.test.{js,jsx}",
+      "**/__tests__/*.{js}"
+    ],
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "unmockedModulePathPatterns": [
+      "react",
+      "enzyme",
+      "jest-enzyme"
+    ],
+    "testURL": "http://localhost"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.4",
+    "npm": "^6.2.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-fontawesome": "^1.6.1"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.4.2",
+    "jest-enzyme": "^6.0.2",
+    "prettier": "^1.14.3",
+    "sinon": "^6.1.4",
+    "style-loader": "^0.21.0",
+    "supertest": "^3.1.0",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.2"
   }
 }
