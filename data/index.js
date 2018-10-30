@@ -3,7 +3,6 @@ const fake = require('faker');
 const HipsterIpsum = require('hipsteripsum');
 const mongoose = require('mongoose');
 const _ = require('underscore');
-// const data = require('./dataToSeed');
 
 mongoose.connect('mongodb://localhost:27017/listing', (err) => {
   if (err) throw err;
