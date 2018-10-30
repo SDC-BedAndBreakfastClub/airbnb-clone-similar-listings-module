@@ -30,10 +30,19 @@ const hipIp = (numOfWords) => {
   return words.join(' ');
 };
 
+const choosePhotoBin = () => {
+  const bin = _.random(1, 13);
+  const photoLinks = [];
+  for (let i = 1; i < 6; i += 1) {
+    photoLinks.push(`https://s3-us-west-1.amazonaws.com/airbnb-clone-images/id_${bin}_img${i}.jpg`);
+  }
+  return photoLinks;
+};
+
 for (let i = 1; i < 101; i += 1) {
   const oneListing = {
     id: i,
-    images: ['1', '2', '3', '4', '5'],
+    images: choosePhotoBin(),
     saved: 0,
     type: 'ENTIRE HOME',
     beds: `${_.random(2, 4)} BEDS`,
