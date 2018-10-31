@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import Photos from './Photos';
 import Details from './Details';
+import '../styles/app.css';
 
 class Listing extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Listing extends React.Component {
   render() {
     const { listings } = this.state;
     return (
-      <div>
+      <div className="grid-container">
         <h3>Listing</h3>
         <Photos listings={listings} />
         <Details listings={listings} />

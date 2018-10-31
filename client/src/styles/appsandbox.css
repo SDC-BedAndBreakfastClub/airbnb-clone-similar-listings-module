@@ -1,0 +1,39 @@
+
+.wrap {
+  overflow: hidden !important;
+  width: 1065px;
+}
+
+.outer-container {
+  display: inline-flex;
+  background-color: #f1f1f1;
+}
+
+.outer-container > div {
+  background-color: DodgerBlue;
+  color: white;
+  width: 335px;
+  margin: 9px;
+  text-align: center;
+  line-height: 325px;
+  font-size: 30px;
+}
+
+.invisible-container {
+  display: none;
+  background-color: DodgerBlue;
+  color: white;
+  width: 335px;
+  margin: 9px;
+  text-align: center;
+  line-height: 325px;
+  font-size: 30px;
+}
+
+._visible-box {
+  display: block;
+  width: 744px;
+  margin-left: -8px !important;
+  margin-right: -8px !important;
+  overflow: hidden !important;
+}
