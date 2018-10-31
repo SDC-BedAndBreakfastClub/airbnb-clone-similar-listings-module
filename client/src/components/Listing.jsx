@@ -14,7 +14,7 @@ class Listing extends React.Component {
 
   componentDidMount() {
     // provide 12 random listings
-    axios.get('/api/rooms/')
+    axios.get('/api/rooms/1/similar_listings')
       .then((response) => {
         this.setState({
           listings: response,
