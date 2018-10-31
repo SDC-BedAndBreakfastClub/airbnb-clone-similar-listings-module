@@ -8,7 +8,7 @@ class Details extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="L1_details">
         <h3>Details</h3>
       </div>
     );

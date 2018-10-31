@@ -8,7 +8,7 @@ class Photos extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="L1_photo">
         <h3>Photos</h3>
       </div>
     );
