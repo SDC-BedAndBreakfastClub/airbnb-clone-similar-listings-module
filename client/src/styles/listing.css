@@ -1,0 +1,13 @@
+
+.grid-container {
+  display: grid;
+  height: 325%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 225px 100px;
+  grid-gap: 1px 1px;
+  grid-template-areas: "photo" "details";
+}
+
+.photo { grid-area: photo; }
+
+.details { grid-area: details; }
