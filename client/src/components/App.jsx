@@ -2,27 +2,14 @@
 import axios from 'axios';
 import React from 'react';
 import Listing from './Listing';
-import '../styles/appsandbox.css';
+import '../styles/app.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       listings: [],
-      // left: 0,
-      // style: {
-      //   'background-color': 'DodgerBlue',
-      //   color: 'white',
-      //   width: '335px',
-      //   margin: '9px',
-      //   'text-align': 'center',
-      //   'line-height': '325px',
-      //   'font-size': '30px',
-      //   position: 'relative',
-      //   left: `${this.state.left}%`,
-      //   transform: 'left(8.3%)',
-      //   transition: 'transform 1s',
-      // },
+      displacement: 0,
     };
     this.slideLeft.bind(this);
   }
@@ -41,21 +28,26 @@ class App extends React.Component {
   }
 
   slideLeft() {
-    const { left } = this.state;
+    const { displacement } = this.state;
     this.setState({
-      left: `${left + 8.3}%`,
+      displacement: displacement - 8.33,
     });
   }
 
   slideRight() {
-    const { left } = this.state;
+    const { displacement } = this.state;
     this.setState({
-      left: `${left - 8.3}%`,
+      displacement: displacement + 8.33,
     });
   }
 
   render() {
     const { listings } = this.state;
+    const { displacement } = this.state;
+    const cssStyle = {
+      transform: `translateX(${displacement}%`,
+      transition: '-webkit-transform 0.5s ease-in-out',
+    };
     return (
       <div>
         <h3>Similar Listings</h3>
@@ -64,7 +56,7 @@ class App extends React.Component {
           <button type="button" onClick={() => this.slideLeft()}>NEXT</button>
         </span>
         <div className="wrap">
-          <div className="carousel">
+          <div className="carousel" style={cssStyle}>
             <div>Listing 1</div>
             <Listing listing={listings[2]} />
             <div>Listing 3</div>
@@ -85,5 +77,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// <button type="button" onClick={this.changePosition(1)} />
