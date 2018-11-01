@@ -4,12 +4,12 @@
   width: 1065px;
 }
 
-.outer-container {
+.carousel {
   display: inline-flex;
   background-color: #f1f1f1;
 }
 
-.outer-container > div {
+.carousel > div {
   background-color: DodgerBlue;
   color: white;
   width: 335px;
@@ -19,11 +19,17 @@
   font-size: 30px;
   position: relative;
   left: -8.3%;
-  transition: left 1s;
+  transform: left(8.3%);
 }
 
-.outer-container:hover {
-  left: -8.3%;
+.carousel .move-left {
+  transform: none;
+  transition: transform 1s
+}
+
+.carousel:hover {
+  transform: none;
+  transition: transform 1s
 }
 
 ._visible-box {
@@ -33,22 +39,3 @@
   margin-right: -8px !important;
   overflow: hidden !important;
 }
-
-/* HTML:  ///////////////////////////////////////////////////
-<div className="visible-box">
-          <div className="flex-container">
-            <div>Listing 1</div>
-            <div>Listing 2</div>
-            <div>Listing 3</div>
-            <div>Listing 4</div>
-            <div>Listing 5</div>
-            <div>Listing 6</div>
-            <div>Listing 7</div>
-            <div>Listing 8</div>
-            <div>Listing 9</div>
-            <div>Listing 10</div>
-            <div>Listing 11</div>
-            <div>Listing 12</div>
-          </div>
-        </div>
-*/
