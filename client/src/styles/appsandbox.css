@@ -17,17 +17,19 @@
   text-align: center;
   line-height: 325px;
   font-size: 30px;
+  position: relative;
+  left: -8.3%;
+  transform: left(8.3%);
 }
 
-.invisible-container {
-  display: none;
-  background-color: DodgerBlue;
-  color: white;
-  width: 335px;
-  margin: 9px;
-  text-align: center;
-  line-height: 325px;
-  font-size: 30px;
+.outer-container .move-left {
+  transform: none;
+  transition: transform 1s
+}
+
+.outer-container:hover {
+  transform: none;
+  transition: transform 1s
 }
 
 ._visible-box {

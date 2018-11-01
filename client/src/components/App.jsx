@@ -5,16 +5,32 @@ import '../styles/appsandbox.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      position: 0,
+    };
+  }
+
+  changePosition(direction) {
+    const { position } = this.state;
+    if (direction > 0) {
+      this.updateState({
+        position: position + 8.3,
+      });
+    } else if (direction < 0) {
+      this.updateState({
+        position: position - 8.3,
+      });
+    }
   }
 
   render() {
+    const { position } = this.state;
     return (
       <div>
         <h3>Similar Listings</h3>
         <div className="wrap">
           <div className="visible-box">
-            <div className="outer-container">
+            <div className={`outer-container position-${position * 8.3}`}>
               <div>Listing 1</div>
               <div>Listing 2</div>
               <div>Listing 3</div>
@@ -36,3 +52,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+// <button type="button" onClick={this.changePosition(1)} />
