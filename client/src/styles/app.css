@@ -1,28 +1,29 @@
 
-.flex-container {
+.wrap {
+  overflow: hidden !important;
+  width: 1065px;
+}
+
+.outer-container {
   display: inline-flex;
   background-color: #f1f1f1;
 }
 
-.flex-container > div {
+.outer-container > div {
   background-color: DodgerBlue;
   color: white;
   width: 335px;
-  margin: 10px;
+  margin: 9px;
   text-align: center;
   line-height: 325px;
   font-size: 30px;
+  position: relative;
+  left: -8.3%;
+  transition: left 1s;
 }
 
-.invisible-container {
-  display: none;
-  background-color: DodgerBlue;
-  color: white;
-  width: 335px;
-  margin: 10px;
-  text-align: center;
-  line-height: 325px;
-  font-size: 30px;
+.outer-container:hover {
+  left: -8.3%;
 }
 
 ._visible-box {

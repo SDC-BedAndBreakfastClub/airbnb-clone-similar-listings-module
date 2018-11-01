@@ -3,7 +3,6 @@ import axios from 'axios';
 import React from 'react';
 import Photos from './Photos';
 import Details from './Details';
-import '../styles/app.css';
 
 class Listing extends React.Component {
   constructor(props) {
