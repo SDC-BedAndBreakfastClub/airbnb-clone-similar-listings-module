@@ -1,7 +1,7 @@
 
 .wrap {
   overflow: hidden !important;
-  width: 1065px;
+  width: 1060px;
 }
 
 .carousel {
@@ -18,24 +18,4 @@
   line-height: 325px;
   font-size: 30px;
   position: relative;
-  left: -8.3%;
-  transform: left(8.3%);
-}
-
-.carousel .move-left {
-  transform: none;
-  transition: transform 1s
-}
-
-.carousel:hover {
-  transform: none;
-  transition: transform 1s
-}
-
-._visible-box {
-  display: block;
-  width: 744px;
-  margin-left: -8px !important;
-  margin-right: -8px !important;
-  overflow: hidden !important;
 }
