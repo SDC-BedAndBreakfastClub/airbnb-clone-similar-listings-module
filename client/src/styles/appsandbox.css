@@ -4,12 +4,12 @@
   width: 1065px;
 }
 
-.outer-container {
+.carousel {
   display: inline-flex;
   background-color: #f1f1f1;
 }
 
-.outer-container > div {
+.carousel > div {
   background-color: DodgerBlue;
   color: white;
   width: 335px;
@@ -18,16 +18,17 @@
   line-height: 325px;
   font-size: 30px;
   position: relative;
-  left: -8.3%;
+  left: 0%;
   transform: left(8.3%);
+  transition: transform 1s;
 }
 
-.outer-container .move-left {
+.carousel .move-left {
   transform: none;
   transition: transform 1s
 }
 
-.outer-container:hover {
+.carousel:hover {
   transform: none;
   transition: transform 1s
 }
