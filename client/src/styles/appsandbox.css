@@ -23,20 +23,12 @@
   transition: transform 1s;
 }
 
-.carousel .move-left {
+/* .carousel .move-left {
   transform: none;
   transition: transform 1s
-}
+} */
 
-.carousel:hover {
+/* .carousel:hover {
   transform: none;
   transition: transform 1s
-}
-
-._visible-box {
-  display: block;
-  width: 744px;
-  margin-left: -8px !important;
-  margin-right: -8px !important;
-  overflow: hidden !important;
-}
+} */
