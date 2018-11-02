@@ -1,4 +1,17 @@
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.center-page {
+  max-width: 1080px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  padding-right: 24px !important;
+  padding-left: 24px !important;
+}
+
 .wrap {
   overflow: hidden !important;
   width: 1060px;
@@ -6,7 +19,6 @@
 
 .carousel {
   display: inline-flex;
-  background-color: #f1f1f1;
   cursor: pointer;
 }
 
@@ -22,13 +34,52 @@
   padding-bottom: 2px !important;
 }
 
-/* .carousel > div {
-  color: white;
-  width: 335px;
-  margin: 9px;
-  text-align: center;
-  line-height: 325px;
-  font-size: 30px;
-  position: relative;
-} */
+.outermost {
+  position: relative !important;
+  z-index: 0 !important;
+}
 
+.button-style {
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer !important;
+  background-color: transparent !important;
+  color: buttontext !important;
+  border: 0px !important;
+  display: block !important;
+  border-color: transparent;
+  border-style: none;
+  border-width: 0px;
+}
+
+.prev-arrow {
+  width: 24px !important;
+  position: absolute !important;
+  top: -50px !important;
+  bottom: 50px !important;
+  display: block !important;
+  z-index: 1 !important;
+  left: -64px !important;
+  padding: 0px 32px !important;
+  background-color: transparent !important;
+  border-color: transparent;
+  border-style: none;
+  border-width: 0px;
+  outline: 0;
+}
+
+.next-arrow {
+  width: 24px !important;
+  position: absolute !important;
+  top: -50px !important;
+  bottom: 50px !important;
+  display: block !important;
+  z-index: 1 !important;
+  right: -22px !important;
+  padding: 0px 32px !important;
+  background-color: transparent !important;
+  border-color: transparent;
+  border-style: none;
+  border-width: 0px;
+  outline: 0;
+}
