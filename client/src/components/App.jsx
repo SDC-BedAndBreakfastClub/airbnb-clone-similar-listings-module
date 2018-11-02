@@ -1,18 +1,82 @@
+
+import axios from 'axios';
 import React from 'react';
 import Listing from './Listing';
+import '../styles/app.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      listings: [],
+      displacement: 0,
+    };
+    this.slideLeft.bind(this);
+  }
+
+  componentDidMount() {
+    // provide 12 random listings
+    axios.get('/api/rooms/1/similar_listings')
+      .then((response) => {
+        this.setState({
+          listings: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  slideLeft() {
+    const { displacement } = this.state;
+    this.setState({
+      displacement: displacement - 8.33,
+    });
+  }
+
+  slideRight() {
+    const { displacement } = this.state;
+    this.setState({
+      displacement: displacement + 8.33,
+    });
   }
 
   render() {
+    const { listings } = this.state;
+    const { displacement } = this.state;
+    const cssStyle = {
+      transform: `translateX(${displacement}%`,
+      transition: '-webkit-transform 0.5s ease-in-out',
+    };
+    if (listings.length) {
+      return (
+        <div>
+          <h2 className="main-title">Similar Listings</h2>
+          <span>
+            <button type="button" onClick={() => this.slideRight()}>LAST</button>
+            <button type="button" onClick={() => this.slideLeft()}>NEXT</button>
+          </span>
+          <div className="wrap">
+            <div className="carousel" style={cssStyle}>
+              <Listing listing={listings[0]} />
+              <Listing listing={listings[1]} />
+              <Listing listing={listings[2]} />
+              <Listing listing={listings[3]} />
+              <Listing listing={listings[4]} />
+              <Listing listing={listings[5]} />
+              <Listing listing={listings[6]} />
+              <Listing listing={listings[7]} />
+              <Listing listing={listings[8]} />
+              <Listing listing={listings[9]} />
+              <Listing listing={listings[10]} />
+              <Listing listing={listings[11]} />
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
-      <div>
-        <h3>App</h3>
-        <Listing />
-      </div>
+      <p>Loading...</p>
     );
   }
 }

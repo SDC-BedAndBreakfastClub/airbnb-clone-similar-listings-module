@@ -10,7 +10,8 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
-    "test": "jest"
+    "test": "jest",
+    "seed": "node data/index.js"
   },
   "jest": {
     "collectCoverage": true,
@@ -47,7 +48,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.4",
-    "css-loader": "^1.0.0",
+    "css-loader": "^1.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^5.8.0",

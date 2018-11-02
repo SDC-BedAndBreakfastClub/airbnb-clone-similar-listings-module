@@ -17,6 +17,10 @@ module.exports = {
         exclude: [/node_modules/, /client/, /public/],
         use: ['eslint-loader'],
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {

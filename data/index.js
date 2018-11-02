@@ -49,13 +49,14 @@ for (let i = 1; i < 101; i += 1) {
     title: `${hipIp(2)} in ${fake.address.county()}`,
     price: _.random(39, 249),
     ratings: _.random(40, 270),
-    average_rating: _.random(4, 5),
+    average_rating: _.random(3, 5),
   };
   allListings.push(oneListing);
 }
 
 Listing.create(allListings, (err) => {
   if (err) throw err;
+  // mongoose.connection.close();
 });
 
 const get12 = (cb) => {
