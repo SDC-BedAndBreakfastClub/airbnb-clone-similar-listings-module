@@ -8,7 +8,7 @@ import '../styles/listing.css';
 
 class Listing extends React.Component {
   constructor({ listing }) {
-    super({ listing });
+    super();
     this.state = {
       listing,
     };
