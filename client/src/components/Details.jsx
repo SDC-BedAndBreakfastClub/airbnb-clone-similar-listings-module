@@ -2,7 +2,7 @@ import React from 'react';
 
 class Details extends React.Component {
   constructor({ listing }) {
-    super();
+    super({ listing });
     this.state = {};
   }
 
