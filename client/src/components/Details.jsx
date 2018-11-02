@@ -1,14 +1,14 @@
 import React from 'react';
 
 class Details extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor({ listing }) {
+    super({ listing });
     this.state = {};
   }
 
   render() {
     return (
-      <div>
+      <div className="L1_details">
         <h3>Details</h3>
       </div>
     );
