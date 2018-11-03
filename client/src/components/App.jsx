@@ -11,7 +11,6 @@ class App extends React.Component {
       listings: [],
       displacement: 0,
     };
-    this.slideLeft.bind(this);
   }
 
   componentDidMount() {
