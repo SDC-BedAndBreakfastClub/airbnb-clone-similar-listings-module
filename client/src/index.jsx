@@ -1,7 +1,5 @@
 /* eslint-env browser */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
+import SimilarListings from './components/SimilarListings';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+window.SimilarListings = SimilarListings;

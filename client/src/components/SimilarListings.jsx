@@ -4,7 +4,7 @@ import React from 'react';
 import Listing from './Listing';
 import '../styles/app.css';
 
-class App extends React.Component {
+class SimilarListings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,8 +41,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { listings } = this.state;
-    const { displacement } = this.state;
+    const { listings, displacement } = this.state;
     const cssStyle = {
       transform: `translateX(${displacement}%`,
       transition: '-webkit-transform 0.5s ease-in-out',
@@ -112,4 +111,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default SimilarListings;
