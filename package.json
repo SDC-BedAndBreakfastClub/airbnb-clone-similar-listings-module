@@ -12,7 +12,8 @@
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
     "test": "jest",
-    "seed": "node data/seed.js"
+    "seed": "node data/seed.js",
+    "start-db": "mongod"
   },
   "dependencies": {
     "axios": "^0.18.0",
