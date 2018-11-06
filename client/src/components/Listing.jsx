@@ -57,7 +57,7 @@ class Listing extends React.Component {
             </svg>
           </button>
         </div>
-        <img src={listing.images[0]} alt="img" />
+        <img className="similar-listings-img" src={listing.images[0]} alt="img" />
         <h4 className="type">{`${listing.type.toUpperCase()} · ${listing.beds.toUpperCase()}`}</h4>
         <h3 className="title">{listing.title}</h3>
         <p className="price">{`$${listing.price} per night`}</p>
