@@ -34,12 +34,6 @@ From within the root directory:
 
 > npm run react-dev
 
-## Start Database
-
-From within the root directory:
-
-> npm start-db
-
 ## Seed Database
 
 From within the root directory:
