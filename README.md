@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/BedandBreakfastClub/airbnb-clone-photo-module
+  - https://github.com/BedandBreakfastClub/airbnb-clone-reviews-module.git
+  - https://github.com/BedandBreakfastClub/airbnb-clone-booking-module.git
+  - https://github.com/BedandBreakfastClub/airbnb-clone-similar-listings-module.git
 
 ## Table of Contents
 
@@ -17,7 +17,9 @@
 
 ## Usage
 
-> Some usage instructions
+From within the root directory:
+
+> npm start
 
 ## Requirements
 
@@ -28,12 +30,20 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ## Development
 
+From within the root directory:
+
+> npm run react-dev
+
+## Seed Database
+
+From within the root directory:
+
+> npm run seed
+
 ### Installing Dependencies
 
 From within the root directory:
 
-```sh
-npm install -g webpack
-npm install
-```
+> npm install -g webpack
+> npm install
 
