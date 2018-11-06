@@ -1,8 +1,8 @@
-body {
+.body-font {
   font-family: 'Montserrat', sans-serif;
 }
 
-img {
+.similar {
   max-height: 225px;
   width: 335px;
   border-radius: 4px;
