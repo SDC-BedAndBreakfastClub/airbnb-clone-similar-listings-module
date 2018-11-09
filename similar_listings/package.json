@@ -1,5 +1,5 @@
 {
-  "name": "proxy_for_airbnb_clone",
+  "name": "airbnb_similiar_listings_clone",
   "version": "1.0.0",
   "description": "clone of similar listings module on AirBnB.com",
   "author": "Eric Callari <ericcallari1@gmail.com>",
@@ -9,8 +9,9 @@
     "node": ">=8.12.0"
   },
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
+    "react-prod": "webpack -d",
     "test": "jest",
     "seed": "node data/seed.js",
     "start-db": "mongod"
