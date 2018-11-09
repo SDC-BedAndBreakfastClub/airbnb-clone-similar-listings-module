@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Similar Listings Module</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <link rel="icon"
+        type="image/png"
+        href="https://www.airbnb.com/favicon.ico">
+  <style>
+    .main-flex {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div className="main-flex">
+    <div id="SimilarListings"></div>
+  </div>
+</body>
+<script type="text/javascript" src="/dist/bundle.js"></script>
+<script>
+  ReactDOM.render(React.createElement(SimilarListings), document.getElementById("SimilarListings"));
+</script>
+</html>
