@@ -4,7 +4,7 @@ const HipsterIpsum = require('hipsteripsum');
 const mongoose = require('mongoose');
 const _ = require('underscore');
 
-mongoose.connect('mongodb://localhost:27017/listing', (err) => {
+mongoose.connect('mongodb://database/listing', (err) => {
   if (err) throw err;
 });
 
@@ -56,34 +56,5 @@ for (let i = 1; i < 101; i += 1) {
 
 Listing.create(allListings, (err) => {
   if (err) throw err;
-  // mongoose.connection.close();
+  mongoose.connection.close();
 });
-
-const get12 = (cb) => {
-  const twelveIDs = [];
-  let twelveListings = [];
-  for (let i = 0; i < 12; i += 1) {
-    const randomN = _.random(1, 100);
-    if (twelveIDs.includes(randomN)) {
-      i -= 1;
-    } else {
-      twelveIDs.push(randomN);
-    }
-  }
-  twelveListings = twelveIDs.map(id => new Promise((resolve, reject) => {
-    Listing.findOne({ id }).exec((err, res) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(res);
-      }
-    });
-  }));
-  Promise.all(twelveListings).then((values) => {
-    cb(null, values);
-  }).catch((reason) => {
-    console.log(reason);
-  });
-};
-
-module.exports = { get12 };
