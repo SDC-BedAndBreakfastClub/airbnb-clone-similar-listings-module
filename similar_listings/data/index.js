@@ -86,4 +86,12 @@ const get12 = (cb) => {
   });
 };
 
+const addListing = (newListing) => {
+  Listing.create(newListing, (err) => {
+    if (err) {
+      throw err;
+    }
+  });
+};
+
 module.exports = { get12 };

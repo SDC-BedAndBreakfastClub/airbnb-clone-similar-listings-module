@@ -17,9 +17,34 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
     if (err) {
       throw err;
     } else {
-      res.send(results);
+      res.status(200).send(results);
     }
   });
+});
+
+app.post('/api/rooms/:listingId/similar_listings', (req, res) => {
+  model.addListing(req.body, (err) => {
+    if (err) {
+      throw err;
+    } else {
+      res.sendStatus(201);
+    }
+  });
+});
+
+app.put('/api/rooms/:listingId/similar_listings', (req, res) => {
+  const { listingId } = req.params;
+  model.editListing(listingId, (err, updated) => {
+    if (err) {
+      throw err;
+    } else {
+      res.status(201).send(updated);
+    }
+  });
+});
+
+app.delete('/api/rooms/:listingId/similar_listings', (req, res) => {
+  
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
