@@ -86,10 +86,12 @@ const get12 = (cb) => {
   });
 };
 
-const addListing = (newListing) => {
+const addListing = (newListing, cb) => {
   Listing.create(newListing, (err) => {
     if (err) {
-      throw err;
+      cb(err);
+    } else {
+      cb(null);
     }
   });
 };
@@ -106,3 +108,4 @@ const deleteListing = (listingId, cb) => {
 
 module.exports = { get12 };
 module.exports = { deleteListing };
+module.exports = { addListing };
