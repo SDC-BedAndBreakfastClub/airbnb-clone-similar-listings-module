@@ -106,6 +106,17 @@ const deleteListing = (listingId, cb) => {
   });
 };
 
+const editListing = (listingId, changes, cb) => {
+  Listing.findOneAndUpdate({ id: listingId }, changes, { new: true }, (err, doc) => {
+    if (err) {
+      cb(err);
+    } else {
+      cb(null, doc);
+    }
+  });
+};
+
 module.exports = { get12 };
 module.exports = { deleteListing };
 module.exports = { addListing };
+module.exports = { editListing };
