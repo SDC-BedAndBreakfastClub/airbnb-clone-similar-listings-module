@@ -34,7 +34,8 @@ app.post('/api/rooms/:listingId/similar_listings', (req, res) => {
 
 app.put('/api/rooms/:listingId/similar_listings', (req, res) => {
   const { listingId } = req.params;
-  model.editListing(listingId, (err, updated) => {
+  const changes = req.body;
+  model.editListing(listingId, changes, (err, updated) => {
     if (err) {
       throw err;
     } else {
