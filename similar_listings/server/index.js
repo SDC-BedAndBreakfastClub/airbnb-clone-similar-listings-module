@@ -22,7 +22,7 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
   });
 });
 
-app.patch('/api/rooms/:listingId/similar_listings', (req, res) => {
+app.post('/api/rooms/:listingId/similar_listings', (req, res) => {
   model.addListing(req.body, (err) => {
     if (err) {
       throw err;
@@ -32,7 +32,7 @@ app.patch('/api/rooms/:listingId/similar_listings', (req, res) => {
   });
 });
 
-app.put('/api/rooms/:listingId/similar_listings', (req, res) => {
+app.patch('/api/rooms/:listingId/similar_listings', (req, res) => {
   const { listingId } = req.params;
   const changes = req.body;
   model.editListing(listingId, changes, (err, updated) => {
