@@ -46,3 +46,12 @@ From within the root directory:
 
 > npm install
 
+### API ROUTES
+
+Direct a GET request to `/api/rooms/:listingId/similar_listings` to retrieve 12 listings similar to listing with `:listingId`
+
+Direct a POST request to `/api/rooms/:listingId` with a listing object to add a listing to the database
+
+Direct a PATCH request to `/api/rooms/:listingId` with altered data to edit the information of the current listing
+
+Direct a DELETE request to `/api/rooms/:listingId` to delete the current listing from the database
