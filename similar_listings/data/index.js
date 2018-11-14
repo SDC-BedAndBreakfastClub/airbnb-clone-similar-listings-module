@@ -94,4 +94,15 @@ const addListing = (newListing) => {
   });
 };
 
+const deleteListing = (listingId, cb) => {
+  Listing.findOneAndDelete({ id: listingId }, (err) => {
+    if (err) {
+      cb(err);
+    } else {
+      cb(null);
+    }
+  });
+};
+
 module.exports = { get12 };
+module.exports = { deleteListing };

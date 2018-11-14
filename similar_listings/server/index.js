@@ -44,7 +44,14 @@ app.put('/api/rooms/:listingId/similar_listings', (req, res) => {
 });
 
 app.delete('/api/rooms/:listingId/similar_listings', (req, res) => {
-  
+  const { listingId } = req.params;
+  model.deleteListing(listingId, (err) => {
+    if (err) {
+      throw err;
+    } else {
+      res.status(200);
+    }
+  });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
