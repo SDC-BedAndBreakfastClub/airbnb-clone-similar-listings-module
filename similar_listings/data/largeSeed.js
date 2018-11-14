@@ -68,6 +68,9 @@ for (let i = 0; i < 200; i += 1) {
   }));
 }
 
+const startTime = Date.now();
+
 Promise.all(chunks).then(() => {
-  console.log(`Database Seeding Complete`);
+  const endTime = Date.now();
+  console.log(`Database Seeding Complete in ${endTime - startTime}ms`);
 });
