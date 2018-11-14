@@ -32,7 +32,7 @@ app.post('/api/rooms/:listingId/similar_listings', (req, res) => {
   });
 });
 
-app.patch('/api/rooms/:listingId/similar_listings', (req, res) => {
+app.patch('/api/rooms/:listingId', (req, res) => {
   const { listingId } = req.params;
   const changes = req.body;
   model.editListing(listingId, changes, (err, updated) => {
@@ -44,7 +44,7 @@ app.patch('/api/rooms/:listingId/similar_listings', (req, res) => {
   });
 });
 
-app.delete('/api/rooms/:listingId/similar_listings', (req, res) => {
+app.delete('/api/rooms/:listingId/', (req, res) => {
   const { listingId } = req.params;
   model.deleteListing(listingId, (err) => {
     if (err) {
