@@ -58,19 +58,13 @@ const generateChunk = (startId) => {
   return allListings;
 };
 
-for (let i = 0; i < 200; i += 1) {
-  chunks.push(Listing.insertMany(generateChunk(i * 50000), { ordered: false }, (error, docs) => {
-    if (error) {
-      throw error;
-    } else {
-      console.log(`${docs.length} documents written to database.`);
-    }
-  }));
-}
-
 const startTime = Date.now();
 
-Promise.all(chunks).then(() => {
+Listing.insertMany(generateChunk(0), { ordered: false }, (error, docs) => {
   const endTime = Date.now();
-  console.log(`Database Seeding Complete in ${endTime - startTime}ms`);
+  if (error) {
+    throw error;
+  } else {
+    console.log(`${docs.length} documents written to database in ${endTime - startTime} ms`);
+  }
 });
