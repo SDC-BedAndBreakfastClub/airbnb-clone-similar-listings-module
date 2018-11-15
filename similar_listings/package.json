@@ -14,6 +14,8 @@
     "react-prod": "webpack -d",
     "test": "jest",
     "seed": "node data/seed.js",
+    "csv": "node data/largeSeed.js",
+    "rm-csv": "rm data/seed.csv",
     "start-db": "mongod"
   },
   "dependencies": {
