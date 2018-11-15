@@ -50,7 +50,19 @@ From within the root directory:
 
 Direct a GET request to `/api/rooms/:listingId/similar_listings` to retrieve 12 listings similar to listing with `:listingId`
 
-Direct a POST request to `/api/rooms/:listingId` with a listing object to add a listing to the database
+Direct a POST request to `/api/rooms/:listingId` with a payload of
+{
+  id: Number,
+  images: [String],
+  saved: Boolean,
+  type: String,
+  beds: String,
+  title: String,
+  price: Number,
+  ratings: Number,
+  average_rating: Number,
+}
+to add a new listing to the database
 
 Direct a PATCH request to `/api/rooms/:listingId` with altered data to edit the information of the current listing
 
