@@ -120,3 +120,4 @@ module.exports = { get12 };
 module.exports = { deleteListing };
 module.exports = { addListing };
 module.exports = { editListing };
+module.exports = { Listing };

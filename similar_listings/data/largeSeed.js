@@ -1,27 +1,10 @@
-const Promise = require('bluebird');
+const fs = require('fs');
+const path = require('path');
 const fake = require('faker');
 const HipsterIpsum = require('hipsteripsum');
-const mongoose = require('mongoose');
 const _ = require('underscore');
 
-mongoose.connect('mongodb://localhost/listings', (err) => {
-  if (err) throw err;
-});
-
-const listingSchema = new mongoose.Schema({
-  id: Number,
-  images: [String],
-  type: String,
-  beds: String,
-  title: String,
-  price: Number,
-  ratings: Number,
-  average_rating: Number,
-});
-
-const Listing = mongoose.model('Listing', listingSchema);
-
-const chunks = [];
+const filePath = path.resolve(__dirname, 'seed.csv');
 
 const hipIp = (numOfWords) => {
   let words = HipsterIpsum.get();
@@ -38,33 +21,34 @@ const choosePhotoBin = () => {
   return photoLinks;
 };
 
-const generateChunk = (startId) => {
-  const allListings = [];
-  for (let i = 1; i <= 50000; i += 1) {
-    const oneListing = {
-      _id: startId + i,
-      images: choosePhotoBin(),
-      saved: 0,
-      type: 'ENTIRE HOME',
-      beds: `${_.random(2, 4)} BEDS`,
-      title: `${hipIp(2)} in ${fake.address.county()}`,
-      price: _.random(39, 249),
-      ratings: _.random(40, 270),
-      average_rating: _.random(3, 5),
-    };
+const generateChunk = () => {
+  let csvRows = '';
 
-    allListings.push(oneListing);
+  for (let i = 1; i <= 50000; i += 1) {
+    csvRows += i;
+    csvRows += ',';
+    csvRows += `[${choosePhotoBin()}]`;
+    csvRows += ',';
+    csvRows += 'ENTIRE HOME';
+    csvRows += ',';
+    csvRows += `${_.random(2, 4)} BEDS`;
+    csvRows += ',';
+    csvRows += `${hipIp(2)} in ${fake.address.county()}`;
+    csvRows += ',';
+    csvRows += _.random(39, 249);
+    csvRows += ',';
+    csvRows += _.random(40, 270);
+    csvRows += ',';
+    csvRows += _.random(3, 5);
+    csvRows += '\n';
   }
-  return allListings;
+  return csvRows;
 };
 
-const startTime = Date.now();
-
-Listing.insertMany(generateChunk(0), { ordered: false }, (error, docs) => {
-  const endTime = Date.now();
+fs.writeFile(filePath, generateChunk(), (error) => {
   if (error) {
-    throw error;
+    console.error(error);
   } else {
-    console.log(`${docs.length} documents written to database in ${endTime - startTime} ms`);
+    console.log('Data Written');
   }
 });
