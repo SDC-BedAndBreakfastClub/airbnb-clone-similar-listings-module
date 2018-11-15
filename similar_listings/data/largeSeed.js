@@ -5,7 +5,6 @@ const HipsterIpsum = require('hipsteripsum');
 const _ = require('underscore');
 
 const filePath = path.resolve(__dirname, 'seed.csv');
-const file = fs.createWriteStream(filePath);
 
 const hipIp = (numOfWords) => {
   let words = HipsterIpsum.get();
@@ -25,7 +24,7 @@ const choosePhotoBin = () => {
 const generateChunk = (startId) => {
   let csvRows = '';
 
-  for (let i = 1; i <= 50000; i += 1) {
+  for (let i = 1; i <= 100000; i += 1) {
     csvRows += startId + i;
     csvRows += ',';
     csvRows += `[${choosePhotoBin()}]`;
@@ -47,10 +46,10 @@ const generateChunk = (startId) => {
 };
 
 const startTime = Date.now();
-
-for (let i = 0; i < 10; i += 1) {
-  fs.writeFileSync(filePath, generateChunk(i * 50000), { flag: 'a' });
-  console.log(`Chunk #${i + 1} written`);
+let chunk = 0;
+for (chunk; chunk < 100; chunk += 1) {
+  fs.writeFileSync(filePath, generateChunk(chunk * 100000), { flag: 'a' });
+  console.log(`Chunk #${chunk + 1} written`);
 }
 const endTime = Date.now();
-console.log(`Files written in ${endTime - startTime}ms`);
+console.log(`${chunk * 100000} records written to file in ${endTime - startTime}ms`);
