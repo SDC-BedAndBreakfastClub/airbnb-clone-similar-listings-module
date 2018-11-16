@@ -11,7 +11,6 @@ mongoose.connect('mongodb://database/listing', (err) => {
 const listingSchema = new mongoose.Schema({
   id: Number,
   images: [String],
-  saved: Boolean,
   type: String,
   beds: String,
   title: String,
