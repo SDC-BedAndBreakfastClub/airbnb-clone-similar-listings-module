@@ -4,7 +4,7 @@ const fake = require('faker');
 const HipsterIpsum = require('hipsteripsum');
 const _ = require('underscore');
 
-const jsonFile = path.resolve(__dirname, 'data.json');
+// const jsonFile = path.resolve(__dirname, 'data.json');
 const csvFile = path.resolve(__dirname, 'data.csv');
 
 const hipIp = (numOfWords) => {
@@ -30,10 +30,10 @@ const similarListings = (num) => {
   return output;
 };
 
-let listings = '';
+let listings = 'id,images,type,beds,title,price,ratings,average_rating,similar\n';
 for (let chunk = 0; chunk < 200; chunk += 1) {
   for (let i = 1; i < 50001; i += 1) {
-    listings += (i + (chunk * 100000));
+    listings += (i + (chunk * 50000));
     listings += ',';
     listings += JSON.stringify(choosePhotoBin());
     listings += ',';
@@ -48,9 +48,10 @@ for (let chunk = 0; chunk < 200; chunk += 1) {
     listings += _.random(40, 270);
     listings += ',';
     listings += _.random(3, 5);
+    listings += JSON.stringify(similarListings(12));
     listings += '\n';
     console.clear();
-    console.log(`${i + (chunk * 100000)} records generated`);
+    console.log(`${i + (chunk * 50000)} records generated`);
   }
   fs.writeFileSync(csvFile, listings, { flag: 'a' }, (err) => { // write CSV
     if (err) {
@@ -59,7 +60,7 @@ for (let chunk = 0; chunk < 200; chunk += 1) {
   });
 }
 
-//=======================================JSON DATA GENERATION=============================================
+// =====================JSON DATA GENERATION===============
 // const generateRecord = (idx) => {
 //   const oneListing = {
 //     id: idx,
