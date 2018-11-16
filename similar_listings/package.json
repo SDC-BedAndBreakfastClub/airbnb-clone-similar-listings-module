@@ -2,10 +2,8 @@
   "name": "airbnb_similiar_listings_clone",
   "version": "1.0.0",
   "description": "clone of similar listings module on AirBnB.com",
-  "author": [
-    "Eric Callari <ericcallari1@gmail.com>",
-    "Keiran Stockley <keirans@gmail.com>",
-  ],
+  "author": "Eric Callari <ericcallari1@gmail.com>",
+  "author": "Keiran Stockley <keirans@gmail.com>",
   "license": "",
   "repository": "https://github.com/BedandBreakfastClub/airbnb-clone-similar-listings-module",
   "engines": {

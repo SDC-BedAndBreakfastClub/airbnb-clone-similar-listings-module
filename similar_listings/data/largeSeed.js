@@ -39,7 +39,7 @@ const generateRecord = (id) => {
     price: _.random(39, 249),
     ratings: _.random(40, 270),
     average_rating: _.random(3, 5),
-    similar: similarListings(12);
+    similar: similarListings(12),
   };
   return JSON.stringify(oneListing);
 };
@@ -49,13 +49,13 @@ let record = 1;
 
 const write = () => {
   let ok = true;
-  while (record < 10000001 && ok) {
+  while (record < 101 && ok) {
     ok = seedData.write(generateRecord(record));
     console.clear();
     console.log(`${record} records written`);
     record += 1;
   }
-  if (record < 10000001) {
+  if (record < 101) {
     seedData.once('drain', write);
   } else {
     seedData.end();
