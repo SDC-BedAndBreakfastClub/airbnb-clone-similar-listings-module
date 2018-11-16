@@ -4,7 +4,7 @@ const fake = require('faker');
 const HipsterIpsum = require('hipsteripsum');
 const _ = require('underscore');
 
-const filePath = path.resolve(__dirname, 'seed.csv');
+const filePath = path.resolve(__dirname, 'data.json');
 
 const hipIp = (numOfWords) => {
   let words = HipsterIpsum.get();
@@ -21,35 +21,39 @@ const choosePhotoBin = () => {
   return photoLinks;
 };
 
-const generateChunk = (startId) => {
-  let csvRows = '';
-
-  for (let i = 1; i <= 100000; i += 1) {
-    csvRows += startId + i;
-    csvRows += ',';
-    csvRows += `[${choosePhotoBin()}]`;
-    csvRows += ',';
-    csvRows += 'ENTIRE HOME';
-    csvRows += ',';
-    csvRows += `${_.random(2, 4)} BEDS`;
-    csvRows += ',';
-    csvRows += `${hipIp(2)} in ${fake.address.county()}`;
-    csvRows += ',';
-    csvRows += _.random(39, 249);
-    csvRows += ',';
-    csvRows += _.random(40, 270);
-    csvRows += ',';
-    csvRows += _.random(3, 5);
-    csvRows += '\n';
-  }
-  return csvRows;
+const generateRecord = (id) => {
+  const oneListing = {
+    id: id,
+    images: choosePhotoBin(),
+    type: 'ENTIRE HOME',
+    beds: `${_.random(2, 4)} BEDS`,
+    title: `${hipIp(2)} in ${fake.address.county()}`,
+    price: _.random(39, 249),
+    ratings: _.random(40, 270),
+    average_rating: _.random(3, 5),
+  };
+  return JSON.stringify(oneListing);
 };
 
-const startTime = Date.now();
-let chunk = 0;
-for (chunk; chunk < 100; chunk += 1) {
-  fs.writeFileSync(filePath, generateChunk(chunk * 100000), { flag: 'a' });
-  console.log(`Chunk #${chunk + 1} written`);
+const seedData = fs.createWriteStream(filePath);
+let record = 1;
+
+const write = () => {
+  let ok = true;
+  while (record < 10000001 && ok) {
+    ok = seedData.write(generateRecord(record));
+    console.clear();
+    console.log(`${record} records written`);
+    record += 1;
+  }
+  if (record < 10000001) {
+    seedData.once('drain', write);
+  } else {
+    seedData.end();
+    const endTime = Date.now();
+    console.log(`${record - 1} records written to file in ${endTime - startTime}ms`);
+  }
 }
-const endTime = Date.now();
-console.log(`${chunk * 100000} records written to file in ${endTime - startTime}ms`);
+
+const startTime = Date.now();
+write();

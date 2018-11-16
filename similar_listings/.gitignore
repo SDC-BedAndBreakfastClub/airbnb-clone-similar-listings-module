@@ -25,4 +25,4 @@ build/
 dist/
 
 # Seed data
-data/seed.csv
+data/data.json

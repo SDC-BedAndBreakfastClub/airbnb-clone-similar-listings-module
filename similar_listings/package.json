@@ -16,9 +16,9 @@
     "react-dev": "webpack -d --watch",
     "react-prod": "webpack -d",
     "test": "jest",
-    "seed": "node data/seed.js",
-    "csv": "node data/largeSeed.js",
-    "rm-csv": "rm data/seed.csv",
+    "mongo-seed": "mongoimport --database listing --collection listings --file data/data.json",
+    "data": "node data/largeSeed.js",
+    "rm-data": "rm data/data.json",
     "start-db": "mongod"
   },
   "dependencies": {
