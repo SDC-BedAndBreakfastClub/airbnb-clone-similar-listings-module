@@ -2,7 +2,10 @@
   "name": "airbnb_similiar_listings_clone",
   "version": "1.0.0",
   "description": "clone of similar listings module on AirBnB.com",
-  "author": "Eric Callari <ericcallari1@gmail.com>",
+  "author": [
+    "Eric Callari <ericcallari1@gmail.com>",
+    "Keiran Stockley <keirans@gmail.com>",
+  ],
   "license": "",
   "repository": "https://github.com/BedandBreakfastClub/airbnb-clone-similar-listings-module",
   "engines": {
@@ -13,7 +16,9 @@
     "react-dev": "webpack -d --watch",
     "react-prod": "webpack -d",
     "test": "jest",
-    "seed": "node data/seed.js",
+    "mongo-seed": "mongoimport --database listing --collection listings --file data/data.json",
+    "data": "node data/largeSeed.js",
+    "rm-data": "rm data/data.json",
     "start-db": "mongod"
   },
   "dependencies": {
@@ -50,9 +55,11 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
+    "fs": "0.0.1-security",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.4.2",
     "jest-enzyme": "^6.0.2",
+    "path": "^0.12.7",
     "prettier": "^1.14.3",
     "regenerator-runtime": "^0.12.1",
     "sinon": "^6.1.4",
