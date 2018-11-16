@@ -11,7 +11,6 @@ mongoose.connect('mongodb://database/listing', (err) => {
 const listingSchema = new mongoose.Schema({
   id: Number,
   images: [String],
-  saved: Boolean,
   type: String,
   beds: String,
   title: String,
@@ -43,7 +42,6 @@ for (let i = 1; i < 101; i += 1) {
   const oneListing = {
     id: i,
     images: choosePhotoBin(),
-    saved: 0,
     type: 'ENTIRE HOME',
     beds: `${_.random(2, 4)} BEDS`,
     title: `${hipIp(2)} in ${fake.address.county()}`,
