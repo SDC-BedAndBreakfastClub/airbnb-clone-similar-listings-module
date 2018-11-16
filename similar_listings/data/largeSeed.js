@@ -21,9 +21,17 @@ const choosePhotoBin = () => {
   return photoLinks;
 };
 
-const generateRecord = (id) => {
+const similarListings = (num) => {
+  const output = [];
+  for (let i = 0; i < num; i += 1) {
+    output.push(_.random(1, 10000000));
+  }
+  return output;
+};
+
+const generateRecord = (idx) => {
   const oneListing = {
-    id: id,
+    id: idx,
     images: choosePhotoBin(),
     type: 'ENTIRE HOME',
     beds: `${_.random(2, 4)} BEDS`,
@@ -31,6 +39,7 @@ const generateRecord = (id) => {
     price: _.random(39, 249),
     ratings: _.random(40, 270),
     average_rating: _.random(3, 5),
+    similar: similarListings(12),
   };
   return JSON.stringify(oneListing);
 };
@@ -39,6 +48,7 @@ const seedData = fs.createWriteStream(filePath);
 let record = 1;
 
 const write = () => {
+  const startTime = Date.now();
   let ok = true;
   while (record < 10000001 && ok) {
     ok = seedData.write(generateRecord(record));
@@ -53,7 +63,5 @@ const write = () => {
     const endTime = Date.now();
     console.log(`${record - 1} records written to file in ${endTime - startTime}ms`);
   }
-}
-
-const startTime = Date.now();
+};
 write();
