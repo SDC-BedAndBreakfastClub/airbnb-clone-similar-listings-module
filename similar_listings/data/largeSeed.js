@@ -22,16 +22,16 @@ const choosePhotoBin = () => {
 };
 
 const similarListings = (num) => {
-  let output = [];
-  for (let i = 0; i < num; i+= 1) {
+  const output = [];
+  for (let i = 0; i < num; i += 1) {
     output.push(_.random(1, 10000000));
   }
   return output;
-}
+};
 
-const generateRecord = (id) => {
+const generateRecord = (idx) => {
   const oneListing = {
-    id: id,
+    id: idx,
     images: choosePhotoBin(),
     type: 'ENTIRE HOME',
     beds: `${_.random(2, 4)} BEDS`,
@@ -48,21 +48,20 @@ const seedData = fs.createWriteStream(filePath);
 let record = 1;
 
 const write = () => {
+  const startTime = Date.now();
   let ok = true;
-  while (record < 101 && ok) {
+  while (record < 10 && ok) {
     ok = seedData.write(generateRecord(record));
     console.clear();
     console.log(`${record} records written`);
     record += 1;
   }
-  if (record < 101) {
+  if (record < 10) {
     seedData.once('drain', write);
   } else {
     seedData.end();
     const endTime = Date.now();
     console.log(`${record - 1} records written to file in ${endTime - startTime}ms`);
   }
-}
-
-const startTime = Date.now();
+};
 write();
