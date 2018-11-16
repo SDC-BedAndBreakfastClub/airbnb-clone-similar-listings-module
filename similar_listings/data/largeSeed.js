@@ -21,6 +21,14 @@ const choosePhotoBin = () => {
   return photoLinks;
 };
 
+const similarListings = (num) => {
+  let output = [];
+  for (let i = 0; i < num; i+= 1) {
+    output.push(_.random(1, 10000000));
+  }
+  return output;
+}
+
 const generateRecord = (id) => {
   const oneListing = {
     id: id,
@@ -31,6 +39,7 @@ const generateRecord = (id) => {
     price: _.random(39, 249),
     ratings: _.random(40, 270),
     average_rating: _.random(3, 5),
+    similar: similarListings(12);
   };
   return JSON.stringify(oneListing);
 };
