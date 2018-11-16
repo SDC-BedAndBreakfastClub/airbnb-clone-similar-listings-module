@@ -50,13 +50,13 @@ let record = 1;
 const write = () => {
   const startTime = Date.now();
   let ok = true;
-  while (record < 10 && ok) {
+  while (record < 10000001 && ok) {
     ok = seedData.write(generateRecord(record));
     console.clear();
     console.log(`${record} records written`);
     record += 1;
   }
-  if (record < 10) {
+  if (record < 10000001) {
     seedData.once('drain', write);
   } else {
     seedData.end();
