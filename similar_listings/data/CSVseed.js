@@ -4,7 +4,6 @@ const fake = require('faker');
 const HipsterIpsum = require('hipsteripsum');
 const _ = require('underscore');
 
-// const jsonFile = path.resolve(__dirname, 'data.json');
 const csvFile = path.resolve(__dirname, 'data.csv');
 
 const hipIp = (numOfWords) => {
@@ -68,58 +67,3 @@ for (chunk; chunk < 1000; chunk += 1) {
 }
 const endTime = Date.now();
 console.log(`${chunk * 10000} records written to file in ${endTime - startTime}ms`);
-
-// =====================JSON DATA GENERATION===============
-// const choosePhotoBinJSON = () => {
-//   const bin = _.random(1, 13);
-//   const photoLinks = [];
-//   for (let i = 1; i < 6; i += 1) {
-//     photoLinks.push(`https://s3-us-west-1.amazonaws.com/airbnb-clone-images/id_${bin}_img${i}.jpg`);
-//   }
-//   return photoLinks;
-// };
-
-// const similarListingsJSON = (num) => {
-//   const output = [];
-//   for (let i = 0; i < num; i += 1) {
-//     output.push(_.random(1, 10000000));
-//   }
-//   return output;
-// };
-// const generateRecordJSON = (idx) => {
-//   const oneListing = {
-//     id: idx,
-//     images: choosePhotoBinJSON(),
-//     type: 'ENTIRE HOME',
-//     beds: `${_.random(2, 4)} BEDS`,
-//     title: `${hipIp(2)} in ${fake.address.county()}`,
-//     price: _.random(39, 249),
-//     ratings: _.random(40, 270),
-//     average_rating: _.random(3, 5),
-//     similars: similarListingsJSON(12),
-//   };
-//   return JSON.stringify(oneListing);
-// };
-
-// const seedData = fs.createWriteStream(jsonFile);
-// let record = 1;
-
-// const write = () => {
-//   const startTime = Date.now();
-//   let ok = true;
-//   while (record < 10000001 && ok) {
-//     ok = seedData.write(generateRecordJSON(record));
-//     console.clear();
-//     console.log(`${record} records written`);
-//     record += 1;
-//   }
-//   if (record < 10000001) {
-//     seedData.once('drain', write);
-//   } else {
-//     seedData.end();
-//     const endTime = Date.now();
-//     console.log(`${record - 1} records written to file in ${endTime - startTime}ms`);
-//   }
-// }
-
-// write();
