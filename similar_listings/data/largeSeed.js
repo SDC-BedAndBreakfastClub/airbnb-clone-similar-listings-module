@@ -13,54 +13,75 @@ const hipIp = (numOfWords) => {
   return words.join(' ');
 };
 
-const choosePhotoBin = () => {
+const choosePhotoBinCSV = () => {
   const bin = _.random(1, 13);
-  const photoLinks = [];
+  let photoLinks = '{';
   for (let i = 1; i < 6; i += 1) {
-    photoLinks.push(`https://s3-us-west-1.amazonaws.com/airbnb-clone-images/id_${bin}_img${i}.jpg`);
+    photoLinks += `"https://s3-us-west-1.amazonaws.com/airbnb-clone-images/id_${bin}_img${i}.jpg",`;
   }
-  return photoLinks;
+  return `${photoLinks.slice(0, photoLinks.length - 1)}}`;
 };
 
-const similarListings = (num) => {
-  const output = [];
+const similarListingsCSV = (num) => {
+  let output = '{';
   for (let i = 0; i < num; i += 1) {
-    output.push(_.random(1, 10000000));
+    output += `${_.random(1, 10000000)},`;
   }
-  return output;
+  return `${output.slice(0, output.length - 1)}}`;
 };
 
-let listings = 'id,images,type,beds,title,price,ratings,average_rating,similar\n';
-for (let chunk = 0; chunk < 200; chunk += 1) {
-  for (let i = 1; i < 50001; i += 1) {
-    listings += (i + (chunk * 50000));
-    listings += ',';
-    listings += JSON.stringify(choosePhotoBin());
-    listings += ',';
-    listings += 'ENTIRE HOME';
-    listings += ',';
-    listings += `${_.random(2, 4)} BEDS`;
-    listings += ',';
-    listings += `${hipIp(2)} in ${fake.address.county()}`;
-    listings += ',';
-    listings += _.random(39, 249);
-    listings += ',';
-    listings += _.random(40, 270);
-    listings += ',';
-    listings += _.random(3, 5);
-    listings += JSON.stringify(similarListings(12));
-    listings += '\n';
-    console.clear();
-    console.log(`${i + (chunk * 50000)} records generated`);
+const generateChunk = (startId) => {
+  let csvRows = '';
+
+  for (let i = 1; i <= 10000; i += 1) {
+    csvRows += `"${startId + i}"`;
+    csvRows += ',';
+    csvRows += `"${choosePhotoBinCSV()}"`;
+    csvRows += ',';
+    csvRows += '"ENTIRE HOME"';
+    csvRows += ',';
+    csvRows += `"${_.random(2, 4)} BEDS"`;
+    csvRows += ',';
+    csvRows += `"${hipIp(2)} in ${fake.address.county()}"`;
+    csvRows += ',';
+    csvRows += `"${_.random(39, 249)}"`;
+    csvRows += ',';
+    csvRows += `"${_.random(40, 270)}"`;
+    csvRows += ',';
+    csvRows += `"${_.random(3, 5)}"`;
+    csvRows += ',';
+    csvRows += `"${similarListingsCSV(12)}"`;
+    csvRows += '\n';
   }
-  fs.writeFileSync(csvFile, listings, { flag: 'a' }, (err) => { // write CSV
-    if (err) {
-      console.log(err);
-    }
-  });
+  return csvRows;
+};
+
+const startTime = Date.now();
+let chunk = 0;
+for (chunk; chunk < 1000; chunk += 1) {
+  fs.writeFileSync(csvFile, generateChunk(chunk * 10000), { flag: 'a' });
+  console.log(`Chunk #${chunk + 1} written`);
 }
+const endTime = Date.now();
+console.log(`${chunk * 10000} records written to file in ${endTime - startTime}ms`);
 
 // =====================JSON DATA GENERATION===============
+// const choosePhotoBin = () => {
+//   const bin = _.random(1, 13);
+//   const photoLinks = [];
+//   for (let i = 1; i < 6; i += 1) {
+//     photoLinks.push(`https://s3-us-west-1.amazonaws.com/airbnb-clone-images/id_${bin}_img${i}.jpg`);
+//   }
+//   return photoLinks;
+// };
+
+// const similarListings = (num) => {
+//   const output = [];
+//   for (let i = 0; i < num; i += 1) {
+//     output.push(_.random(1, 10000000));
+//   }
+//   return output;
+// };
 // const generateRecord = (idx) => {
 //   const oneListing = {
 //     id: idx,
@@ -71,7 +92,7 @@ for (let chunk = 0; chunk < 200; chunk += 1) {
 //     price: _.random(39, 249),
 //     ratings: _.random(40, 270),
 //     average_rating: _.random(3, 5),
-//     similar: similarListings(12),
+//     similars: similarListings(12),
 //   };
 //   return JSON.stringify(oneListing);
 // };
