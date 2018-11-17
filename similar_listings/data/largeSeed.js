@@ -13,6 +13,10 @@ const hipIp = (numOfWords) => {
   return words.join(' ');
 };
 
+// =================CSV DATA GENERATION====================
+// choosePhotoBinCSV and similarListingsCSV generate data in a
+// format that postgresql will recognize as an array
+// ie {data1, data2, ...} instead of using []
 const choosePhotoBinCSV = () => {
   const bin = _.random(1, 13);
   let photoLinks = '{';
@@ -30,7 +34,7 @@ const similarListingsCSV = (num) => {
   return `${output.slice(0, output.length - 1)}}`;
 };
 
-const generateChunk = (startId) => {
+const generateChunkCSV = (startId) => {
   let csvRows = '';
 
   for (let i = 1; i <= 10000; i += 1) {
@@ -59,14 +63,14 @@ const generateChunk = (startId) => {
 const startTime = Date.now();
 let chunk = 0;
 for (chunk; chunk < 1000; chunk += 1) {
-  fs.writeFileSync(csvFile, generateChunk(chunk * 10000), { flag: 'a' });
+  fs.writeFileSync(csvFile, generateChunkCSV(chunk * 10000), { flag: 'a' });
   console.log(`Chunk #${chunk + 1} written`);
 }
 const endTime = Date.now();
 console.log(`${chunk * 10000} records written to file in ${endTime - startTime}ms`);
 
 // =====================JSON DATA GENERATION===============
-// const choosePhotoBin = () => {
+// const choosePhotoBinJSON = () => {
 //   const bin = _.random(1, 13);
 //   const photoLinks = [];
 //   for (let i = 1; i < 6; i += 1) {
@@ -75,24 +79,24 @@ console.log(`${chunk * 10000} records written to file in ${endTime - startTime}m
 //   return photoLinks;
 // };
 
-// const similarListings = (num) => {
+// const similarListingsJSON = (num) => {
 //   const output = [];
 //   for (let i = 0; i < num; i += 1) {
 //     output.push(_.random(1, 10000000));
 //   }
 //   return output;
 // };
-// const generateRecord = (idx) => {
+// const generateRecordJSON = (idx) => {
 //   const oneListing = {
 //     id: idx,
-//     images: choosePhotoBin(),
+//     images: choosePhotoBinJSON(),
 //     type: 'ENTIRE HOME',
 //     beds: `${_.random(2, 4)} BEDS`,
 //     title: `${hipIp(2)} in ${fake.address.county()}`,
 //     price: _.random(39, 249),
 //     ratings: _.random(40, 270),
 //     average_rating: _.random(3, 5),
-//     similars: similarListings(12),
+//     similars: similarListingsJSON(12),
 //   };
 //   return JSON.stringify(oneListing);
 // };
@@ -104,7 +108,7 @@ console.log(`${chunk * 10000} records written to file in ${endTime - startTime}m
 //   const startTime = Date.now();
 //   let ok = true;
 //   while (record < 10000001 && ok) {
-//     ok = seedData.write(generateRecord(record));
+//     ok = seedData.write(generateRecordJSON(record));
 //     console.clear();
 //     console.log(`${record} records written`);
 //     record += 1;
