@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['similar_listings_module'],
+  app_name: ['airbnb_similiar_listings_clone'],
   /**
    * Your New Relic license key.
    */
