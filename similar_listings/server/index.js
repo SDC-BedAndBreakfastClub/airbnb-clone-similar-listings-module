@@ -56,39 +56,3 @@ app.delete('/api/rooms/:listingId/', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
-// const addListing = (newListing, cb) => {
-//   Listing.create(newListing, (err) => {
-//     if (err) {
-//       cb(err);
-//     } else {
-//       cb(null);
-//     }
-//   });
-// };
-
-// const deleteListing = (listingId, cb) => {
-//   Listing.findOneAndDelete({ id: listingId }, (err) => {
-//     if (err) {
-//       cb(err);
-//     } else {
-//       cb(null);
-//     }
-//   });
-// };
-
-// const editListing = (listingId, changes, cb) => {
-//   Listing.findOneAndUpdate({ id: listingId }, changes, { new: true }, (err, doc) => {
-//     if (err) {
-//       cb(err);
-//     } else {
-//       cb(null, doc);
-//     }
-//   });
-// };
-
-// module.exports = { get12 };
-// module.exports = { deleteListing };
-// module.exports = { addListing };
-// module.exports = { editListing };
-// module.exports = { Listing };
