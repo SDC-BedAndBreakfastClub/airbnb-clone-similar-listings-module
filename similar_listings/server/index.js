@@ -1,19 +1,19 @@
-
-const bodyParser = require('body-parser');
-const express = require('express');
 const cors = require('cors');
-const model = require('../data/index');
+const express = require('express');
+const path = require('path');
+const connection = require('../data/index');
 
 const app = express();
 const port = process.env.PORT || 3003;
 
-app.use('/', express.static('public'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/', express.static(path.resolve(__dirname, '../public')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
-  model.get12((err, results) => {
+  const currentListing = req.params.listingId;
+  connection.get12(currentListing, (err, results) => {
     if (err) {
       throw err;
     } else {
@@ -23,7 +23,7 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
 });
 
 app.post('/api/rooms/:listingId/similar_listings', (req, res) => {
-  model.addListing(req.body, (err) => {
+  connection.addListing(req.body, (err) => {
     if (err) {
       throw err;
     } else {
@@ -35,7 +35,7 @@ app.post('/api/rooms/:listingId/similar_listings', (req, res) => {
 app.patch('/api/rooms/:listingId', (req, res) => {
   const { listingId } = req.params;
   const changes = req.body;
-  model.editListing(listingId, changes, (err, updated) => {
+  connection.editListing(listingId, changes, (err, updated) => {
     if (err) {
       throw err;
     } else {
@@ -46,7 +46,7 @@ app.patch('/api/rooms/:listingId', (req, res) => {
 
 app.delete('/api/rooms/:listingId/', (req, res) => {
   const { listingId } = req.params;
-  model.deleteListing(listingId, (err) => {
+  connection.deleteListing(listingId, (err) => {
     if (err) {
       throw err;
     } else {
