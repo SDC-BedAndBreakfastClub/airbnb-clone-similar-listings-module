@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
-  const currentListing = req.params.listingId;
-  connection.get12(currentListing, (err, results) => {
+  const { listingId } = req.params;
+  connection.get12(listingId, (err, results) => {
     if (err) {
       throw err;
     } else {
@@ -34,9 +34,9 @@ app.post('/api/rooms/:listingId/similar_listings', (req, res) => {
 });
 
 app.patch('/api/rooms/:listingId', (req, res) => {
-  const currentListing = req.params.listingId;
+  const { listingId } = req.params;
   const changes = req.body;
-  connection.editListing(currentListing, changes, (err, updated) => {
+  connection.editListing(listingId, changes, (err, updated) => {
     if (err) {
       throw err;
     } else {
@@ -46,8 +46,8 @@ app.patch('/api/rooms/:listingId', (req, res) => {
 });
 
 app.delete('/api/rooms/:listingId/', (req, res) => {
-  const currentListing = req.params.listingId;
-  connection.deleteListing(currentListing, (err) => {
+  const { listingId } = req.params;
+  connection.deleteListing(listingId, (err) => {
     if (err) {
       throw err;
     } else {
