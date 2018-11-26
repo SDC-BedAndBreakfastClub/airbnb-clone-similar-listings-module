@@ -1,4 +1,4 @@
-const nr = require('newrelic');
+require('newrelic');
 const cors = require('cors');
 const express = require('express');
 const path = require('path');
