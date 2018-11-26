@@ -5,7 +5,7 @@ const path = require('path');
 const connection = require('../data/index');
 
 const app = express();
-const port = process.env.PORT || 3003;
+const port = 80;
 
 app.use('/', express.static(path.resolve(__dirname, '../public')));
 app.use(express.json());
@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
-  const currentListing = req.params.listingId;
-  connection.get12(currentListing, (err, results) => {
+  const { listingId } = req.params;
+  connection.get12(listingId, (err, results) => {
     if (err) {
       throw err;
     } else {
