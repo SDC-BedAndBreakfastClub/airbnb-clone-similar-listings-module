@@ -27,6 +27,7 @@ dist/
 # Seed data
 data/data.json
 data/data.csv
+dump.sql
 
 newrelic.js
 data/old.index.js
