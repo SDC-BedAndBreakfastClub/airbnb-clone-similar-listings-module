@@ -16,7 +16,8 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
   const { listingId } = req.params;
   connection.get12(listingId, (err, results) => {
     if (err) {
-      throw err;
+      console.log(err);
+      res.status(500).end();
     } else {
       res.status(200).send(results);
     }
@@ -26,7 +27,8 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
 app.post('/api/rooms/:listingId/similar_listings', (req, res) => {
   connection.addListing(req.body, (err) => {
     if (err) {
-      throw err;
+      console.log(err);
+      res.status(500).end();
     } else {
       res.sendStatus(201);
     }
@@ -38,7 +40,8 @@ app.patch('/api/rooms/:listingId', (req, res) => {
   const changes = req.body;
   connection.editListing(listingId, changes, (err, updated) => {
     if (err) {
-      throw err;
+      console.log(err);
+      res.status(500).end();
     } else {
       res.status(201).send(updated);
     }
@@ -49,7 +52,8 @@ app.delete('/api/rooms/:listingId/', (req, res) => {
   const { listingId } = req.params;
   connection.deleteListing(listingId, (err) => {
     if (err) {
-      throw err;
+      console.log(err);
+      res.status(500).end();
     } else {
       res.status(200);
     }
