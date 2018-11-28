@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/BedandBreakfastClub/airbnb-clone-photo-module
-  - https://github.com/BedandBreakfastClub/airbnb-clone-reviews-module.git
-  - https://github.com/BedandBreakfastClub/airbnb-clone-booking-module.git
-  - https://github.com/BedandBreakfastClub/airbnb-clone-similar-listings-module.git
+  - https://github.com/SDC-BedAndBreakfastClub/photos_module
+  - https://github.com/SDC-BedAndBreakfastClub/Review_Module_By_Han_Linaung
+  - https://github.com/SDC-BedAndBreakfastClub/airbnb-clone-booking-module
+  - https://github.com/SDC-BedAndBreakfastClub/airbnb-clone-similar-listings-module
 
 ## Table of Contents
 
@@ -16,6 +16,12 @@
 1. [Development](#development)
 
 ## Usage
+
+Set the following environment variables according to your PostgreSQL database:
+> PGUSER
+> PGDATABASE
+> PGHOST
+> PGPORT
 
 From within the root directory:
 
@@ -33,12 +39,6 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 > npm run react-dev
-
-## Seed Database
-
-From within the root directory:
-
-> npm run seed
 
 ### Installing Dependencies
 

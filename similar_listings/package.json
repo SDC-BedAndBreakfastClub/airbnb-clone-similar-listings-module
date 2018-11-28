@@ -10,8 +10,8 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "react-dev": "webpack -d --watch",
-    "react-prod": "webpack -d",
+    "react-dev": "npx webpack -d --watch",
+    "react-prod": "npx webpack -d",
     "test": "jest",
     "data-csv": "node data/CSVgen.js",
     "data-json": "node data/JSONgen.js"
