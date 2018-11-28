@@ -16,7 +16,7 @@ class SimilarListings extends React.Component {
     // provide 12 random listings
     // axios.get(`/api${window.location.pathname}/similar_listings`)
     const randomListing = Math.floor(Math.random() * 10000000 + 1);
-    axios.get(`http://127.0.0.1:3003/api/rooms/${randomListing}/similar_listings`)
+    axios.get(`http://54.84.32.189:80/api/rooms/${randomListing}/similar_listings`)
       .then((response) => {
         this.setState({
           listings: response.data,

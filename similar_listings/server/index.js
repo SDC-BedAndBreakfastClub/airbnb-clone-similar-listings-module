@@ -5,7 +5,7 @@ const path = require('path');
 const connection = require('../data/index');
 
 const app = express();
-const port = 80;
+const port = process.env.PORT || 80;
 
 app.use('/', express.static(path.resolve(__dirname, '../public')));
 app.use(express.json());
