@@ -72,4 +72,16 @@ app.delete('/api/rooms/:listingId/', (req, res) => {
   });
 });
 
+app.get('/loaderio-8f7bef52bfceaf8d4da87364dadcf99c/', (req, res) => {
+  const filePath = path.resolve(__dirname, '../loader.txt');
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('index file sent');
+    }
+  });
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
