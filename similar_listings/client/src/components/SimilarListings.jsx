@@ -15,7 +15,7 @@ class SimilarListings extends React.Component {
   componentDidMount() {
     // provide the 12 similar listings for the current id
     const currentUrl = window.location.href.split('/');
-    const campaignId = currentUrl[currentUrl.length - 1];
+    const campaignId = currentUrl[currentUrl.length - 1] ? currentUrl[currentUrl.length - 1] : currentUrl[currentUrl.length - 2];
     axios.get(`http://54.84.32.189:3000/api/rooms/${campaignId}/similar_listings`)
       .then((response) => {
         this.setState({
