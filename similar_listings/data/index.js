@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  max: 100,
+  max: 10,
 });
 
 const get12 = (listingId, cb) => {
