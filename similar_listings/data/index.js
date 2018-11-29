@@ -1,6 +1,8 @@
 const { Pool } = require('pg');
 
-const pool = new Pool();
+const pool = new Pool({
+  max: 100,
+});
 
 const get12 = (listingId, cb) => {
   const querySimilars = 'SELECT similars FROM listings WHERE id = $1';
