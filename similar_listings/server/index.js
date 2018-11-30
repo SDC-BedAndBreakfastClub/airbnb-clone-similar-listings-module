@@ -2,6 +2,8 @@ require('newrelic');
 const cors = require('cors');
 const express = require('express');
 const path = require('path');
+const redis = require('redis');
+const { client } = require('./redis.js');
 const connection = require('../data/index');
 
 const app = express();
@@ -26,11 +28,29 @@ app.get('/rooms/:listingId', (req, res) => {
 
 app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
   const { listingId } = req.params;
+
+  // check for query result in cache
+  client.get(listingId, (err, reply) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else if (reply) { // if the information is cached, send it
+      console.log(reply);
+      res.status(200).send(reply);
+    }
+  });
+  client.quit();
+
+  // if query response is not in cache, query the database
   connection.get12(listingId, (err, results) => {
     if (err) {
       console.log(err);
       res.status(500).end();
     } else {
+      // add the query result to cache
+      client.set(listingId, results, redis.print);
+      client.quit();
+      // send query result
       res.status(200).send(results);
     }
   });
