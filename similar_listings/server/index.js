@@ -39,8 +39,8 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
       console.log(reply);
       res.status(200).send(reply);
     }
+    // client.quit();
   });
-  client.quit();
 
   // if query response is not in cache, query the database
   connection.get12(listingId, (err, results) => {
@@ -51,7 +51,7 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
     } else {
       // add the query result to cache
       client.set(listingId, results, redis.print);
-      client.quit();
+      // client.quit();
       // send query result
       res.status(200).send(results);
     }
