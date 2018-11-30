@@ -35,7 +35,7 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
       console.log(err);
       return res.sendStatus(500);
     }
-    if (reply !== 'null') { // if the information is cached, send it
+    if (reply) { // if the information is cached, send it
       console.log(reply);
       return res.status(200).send(reply);
     }
