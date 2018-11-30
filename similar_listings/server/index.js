@@ -31,6 +31,7 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
 
   // check for query result in cache
   client.get(listingId, (err, reply) => {
+    console.log(`Checking Cache for ${listingId}`);
     if (err) {
       console.log(err);
       res.sendStatus(500);
@@ -43,6 +44,7 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
 
   // if query response is not in cache, query the database
   connection.get12(listingId, (err, results) => {
+    console.log('Not in cache, querying database');
     if (err) {
       console.log(err);
       res.status(500).end();
