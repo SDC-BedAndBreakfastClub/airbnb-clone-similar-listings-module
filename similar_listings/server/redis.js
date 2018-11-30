@@ -1,12 +1,12 @@
 const redis = require('redis');
 
 const client = redis.createClient({
-  host: '54.197.11.32',
+  host: '172.31.37.211',
   port: '6379',
 });
 
 client.on('error', (err) => {
-  console.log('Error: ' + err);
+  console.log(`Error: ${err}`);
 });
 
 module.exports = { client };
