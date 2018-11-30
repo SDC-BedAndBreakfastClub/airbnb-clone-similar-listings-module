@@ -2,7 +2,6 @@ require('newrelic');
 const cors = require('cors');
 const express = require('express');
 const path = require('path');
-const redis = require('redis');
 const { client } = require('./redis.js');
 const connection = require('../data/index');
 
