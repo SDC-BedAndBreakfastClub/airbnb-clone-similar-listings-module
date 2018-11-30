@@ -38,22 +38,20 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
     } else if (reply) { // if the information is cached, send it
       console.log(reply);
       res.status(200).send(reply);
-    }
-    // client.quit();
-  });
-
-  // if query response is not in cache, query the database
-  connection.get12(listingId, (err, results) => {
-    console.log('Not in cache, querying database');
-    if (err) {
-      console.log(err);
-      res.status(500).end();
     } else {
-      // add the query result to cache
-      client.set(listingId, results, redis.print);
-      // client.quit();
-      // send query result
-      res.status(200).send(results);
+      // if query response is not in cache, query the database
+      connection.get12(listingId, (err, results) => {
+        console.log('Not in cache, querying database');
+        if (err) {
+          console.log(err);
+          res.status(500).end();
+        } else {
+          // add the query result to cache
+          client.set(listingId, JSON.stringify(results));
+          // send query result
+          res.status(200).send(results);
+        }
+      });
     }
   });
 });
