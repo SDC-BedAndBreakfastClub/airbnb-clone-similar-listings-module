@@ -30,29 +30,28 @@ app.get('/api/rooms/:listingId/similar_listings', (req, res) => {
   const { listingId } = req.params;
 
   // check for query result in cache
-  client.get(listingId, (err, reply) => {
+  return client.get(listingId, (err, reply) => {
     console.log(`Checking Cache for ${listingId}`);
     if (err) {
       console.log(err);
-      res.sendStatus(500);
-    } else if (reply) { // if the information is cached, send it
-      console.log(reply);
-      res.status(200).send(reply);
-    } else {
-      // if query response is not in cache, query the database
-      connection.get12(listingId, (err, results) => {
-        console.log('Not in cache, querying database');
-        if (err) {
-          console.log(err);
-          res.status(500).end();
-        } else {
-          // add the query result to cache
-          client.set(listingId, JSON.stringify(results));
-          // send query result
-          res.status(200).send(results);
-        }
-      });
+      return res.sendStatus(500);
     }
+    if (reply !== 'null') { // if the information is cached, send it
+      console.log(reply);
+      return res.status(200).send(reply);
+    }
+    // if query response is not in cache, query the database
+    return connection.get12(listingId, (err, results) => {
+      console.log('Not in cache, querying database');
+      if (err) {
+        console.log(err);
+        return res.status(500).end();
+      }
+      // add the query result to cache
+      client.set(listingId, JSON.stringify(results));
+      // send query result
+      return res.status(200).send(results);
+    });
   });
 });
 
